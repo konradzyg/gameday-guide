@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameDay Guide</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>GameDay Guide</h1>
+    </header>
+    <form method="POST" action="/">
+        <label for="sport">Choose a sport:</label>
+        <select name="sport" id="sport" onchange="updateTeams()">
+            <option value="">Select a sport</option>
+            <option value="NFL">NFL</option>
+            <option value="NBA">NBA</option>
+            <option value="MLB">MLB</option>
+            <option value="MLS">MLS</option>
+            <option value="NHL">NHL</option>
+        </select>
+
+        <label for="team">Choose a team:</label>
+        <select name="team" id="team">
+            <option value="">Select a team</option>
+        </select>
+
+        <input type="submit" value="Search">
+    </form>
+
+    <div>
+        {% if games %}
+            {% for game in games %}
+                <div>
+                    <h2>Event: {{ game.name }}</h2>
+                    <p>Date: {{ game.date }} Time: {{ game.time }}</p>
+                    <p>Venue: {{ game.venue }}</p>
+                    {% if game.lowest_price %}
+                        <p>Lowest Price: {{ game.lowest_price }} {{ game.currency }}</p>
+                    {% else %}
+                        <p>Price information not available</p>
+                    {% endif %}
+                    <p>Ticketmaster Page: <a href="{{ game.event_url }}" target="_blank">View Event</a></p>
+                    <hr>
+                </div>
+            {% endfor %}
+        {% else %}
+            {% if request.method == 'POST' %}
+                <p>No games found for the specified team.</p>
+            {% else %}
+                <p>Search for a team to begin.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <script type="text/javascript">
+        function updateTeams() {
+            const selectedSport = document.getElementById("sport").value;
+            $.ajax({
+                url: '/get_teams',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ league: selectedSport }),
+                success: function(response) {
+                    const teamSelect = document.getElementById("team");
+                    teamSelect.innerHTML = '<option value="">Select a team</option>';
+                    response.teams.forEach(function(team) {
+                        const option = document.createElement("option");
+                        option.value = team;
+                        option.text = team;
+                        teamSelect.appendChild(option);
+                    });
+                }
+            });
+        }
+    </script>
+    <footer>
+        <p>&copy; 2024 GameDay Guide</p>
+    </footer>
+</body>
+</html>

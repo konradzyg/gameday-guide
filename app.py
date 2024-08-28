@@ -65,7 +65,7 @@ def get_tm_event(team, sport):
 
 @app.route('/')
 def index():
-    return render_template('index.html', games=[], message="Search for a team to begin")
+    return render_template('index.html', games=[])
 
 @app.route('/get_teams', methods=['POST'])
 def get_teams():
@@ -79,8 +79,7 @@ def index_post():
     team = request.form['team']
 
     if not sport or not team:
-        message = "Please select both a league and a team."
-        return render_template('index.html', games=[], message=message)
+        return render_template('index.html', games=[])
 
     games = get_tm_event(team, sport)
     if not games:

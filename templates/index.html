@@ -29,21 +29,31 @@
 
         <input type="submit" value="Search">
     </form>
-
     <div>
         {% if games %}
             {% for game in games %}
-                <div>
-                    <h2>{{ game.name }}</h2>
-                    <p>Date: {{ game.date }} Time: {{ game.time }}</p>
-                    <p>Venue: {{ game.venue }}</p>
-                    {% if game.lowest_price %}
-                        <p><img src="{{ url_for('static', filename='images/tm_logo.webp') }}" alt="Ticketmaster" class="tm-logo"> Lowest Price: {{ game.lowest_price }} {{ game.currency }} <a href="{{ game.event_url }}" target="_blank">Purchase Tickets</a></p>
-                    {% else %}
-                        <p><img src="{{ url_for('static', filename='images/tm_logo.webp') }}" alt="Ticketmaster" class="tm-logo"> Price information not available <a href="{{ game.event_url }}" target="_blank">Purchase Tickets</a></p>
-                    {% endif %}
-                    <hr>
+                <div class="game-info">
+                    <div class="game-details">
+                        <h2>{{ game.name }}</h2>
+                        <p>Date: {{ game.date }}</p>
+                        <p>Time: {{ game.time }}</p>
+                        <p>Venue: {{ game.venue }}</p>
+                    </div>
+                    <div class="tm-purchase">
+                        {% if game.lowest_price %}
+                            <button onclick="window.open('{{ game.event_url }}', '_blank');" class="tm-button">
+                                <img src="{{ url_for('static', filename='images/tm_logo.webp') }}" alt="Ticketmaster" class="tm-logo"> 
+                                Lowest Price: {{ game.lowest_price }} {{ game.currency }}
+                            </button>
+                        {% else %}
+                            <button onclick="window.open('{{ game.event_url }}', '_blank');" class="tm-button">
+                                <img src="{{ url_for('static', filename='images/tm_logo.webp') }}" alt="Ticketmaster" class="tm-logo"> 
+                                Price information not available
+                            </button>
+                        {% endif %}
+                    </div>
                 </div>
+                <hr>
             {% endfor %}
         {% else %}
             {% if request.method == 'POST' %}

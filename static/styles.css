@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 30px;
     text-align: center;
 }
 
@@ -95,3 +95,62 @@ input:invalid:focus, select:invalid:focus {
     background-color: #4CAF50; /* Green background color on hover */
     color: white; /* White text color on hover */
 }
+
+
+/* Container for the game information and Ticketmaster link */
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Align the game details on the left */
+.game-details {
+    text-align: left;
+}
+
+/* Align the Ticketmaster link on the right */
+.tm-purchase {
+    text-align: right;
+}
+
+/* Ensure the image and text are aligned properly */
+.tm-purchase img {
+    vertical-align: middle;
+    margin-right: 10px; /* Space between the logo and text */
+}
+
+/* Ensure the text in the game-details does not get too close to the container edge */
+.game-details p {
+    margin: 5px 0;
+}
+
+/* Ensure the button and its contents are aligned properly */
+.tm-button {
+    display: flex;
+    align-items: center;
+    background-color: #007bff; /* Blue background color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+}
+
+.tm-button img {
+    margin-right: 10px; /* Space between the logo and text */
+}
+
+/* Change button color on hover */
+.tm-button:hover {
+    background-color: #0056b3; /* Darker blue background color on hover */
+}
+
+/* Ensure the text inside the button is aligned properly */
+.tm-button span {
+    display: inline;
+}
+

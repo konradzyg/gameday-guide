@@ -1,0 +1,97 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+h1 {
+    margin: 0;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+    margin: 20px 0;
+    
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    
+}
+
+select, input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.tm-logo {
+    height: 1.5em;
+    width: auto;
+    vertical-align: middle;
+    margin-bottom: 0.25em;
+}
+
+input:invalid:focus, select:invalid:focus {
+    outline-color: red;
+}
+
+/* Styles for the form container */
+#searchForm {
+    background-color: #f9f9f9; /* Default background color */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: background-color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Hover effect for the form */
+#searchForm:hover {
+    background-color: #e0e0e0; /* Background color on hover */
+}
+
+/* Styles for the form elements */
+#searchForm label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+#searchForm select, #searchForm input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Change button color on hover */
+#searchForm input[type="submit"]:hover {
+    background-color: #4CAF50; /* Green background color on hover */
+    color: white; /* White text color on hover */
+}

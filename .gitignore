@@ -1,4 +1,5 @@
-config.py
+.env
+venv
 api_response.json
 
 

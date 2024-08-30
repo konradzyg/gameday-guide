@@ -6,18 +6,11 @@ GameDay Guide is a web application that allows users to search for upcoming spor
 
 ## Technologies Used
 ### Backend:
-Python
-Flask
-Requests
-JSON
+Python, Flask, Requests, JSON
 ### Frontend:
-HTML5
-CSS3
-JavaScript (with jQuery)
+HTML5, CSS3, JavaScript (with jQuery)
 ### APIs:
-Ticketmaster API
-SeatGeek API (Coming Soon)
-StubHub API (Coming Soon)
+Ticketmaster API, SeatGeek API (Coming Soon), StubHub API (Coming Soon)
 
 ## Usage
 Choose a league from the dropdown.
